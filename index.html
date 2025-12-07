@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KLC KAROT - Profesyonel Karot Delme Hizmetleri</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.8;
+            color: #2c3e50;
+            background: #ecf0f1;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #1a252f 0%, #2c3e50 100%);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .logo {
+            font-size: 3.5rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+            letter-spacing: 4px;
+            color: #3498db;
+        }
+
+        .hero-subtitle {
+            font-size: 1.1rem;
+            color: #bdc3c7;
+            margin-bottom: 2rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .hero-phone {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #3498db;
+            margin: 1.5rem 0;
+        }
+
+        .hero-phone a {
+            color: #3498db;
+            text-decoration: none;
+        }
+
+        .hero-phone a:hover {
+            color: #2980b9;
+        }
+
+        .hero-description {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 2rem auto;
+            color: #ecf0f1;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 2.5rem;
+        }
+
+        .btn {
+            padding: 1.2rem 2.5rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn-primary {
+            background: #3498db;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #2980b9;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid #3498db;
+        }
+
+        .btn-secondary:hover {
+            background: #3498db;
+        }
+
+        .whatsapp-icon {
+            width: 20px;
+            height: 20px;
+            margin-right: 8px;
+            vertical-align: middle;
+        }
+
+        .container {
+            max-width: 1300px;
+            margin: -50px auto 0;
+            padding: 0 2rem 4rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        .main-card {
+            background: white;
+            border-radius: 8px;
+            padding: 4rem 3rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: #2c3e50;
+            margin-bottom: 3rem;
+            padding-bottom: 1.5rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120px;
+            height: 4px;
+            background: #3498db;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 2.5rem;
+            margin-bottom: 4rem;
+        }
+
+        .service-card {
+            grid-column: span 2;
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 2.5rem;
+            transition: all 0.3s;
+            border-left: 5px solid #3498db;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(52,152,219,0.2);
+            background: white;
+        }
+
+        .service-card:nth-child(4) {
+            grid-column: 2 / 4;
+        }
+        
+        .service-card:nth-child(5) {
+            grid-column: 4 / 6;
+        }
+
+        .service-card h3 {
+            color: #2c3e50;
+            font-size: 1.6rem;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+        }
+
+        .service-card p {
+            color: #555;
+            font-size: 1.05rem;
+            line-height: 1.8;
+        }
+
+        .features-section {
+            background: linear-gradient(135deg, #34495e 0%, #2c3e50 100%);
+            border-radius: 8px;
+            padding: 4rem 3rem;
+            margin: 4rem 0;
+            color: white;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .feature-item {
+            grid-column: span 2;
+            display: flex;
+            align-items: flex-start;
+            gap: 1.5rem;
+            background: rgba(255,255,255,0.08);
+            padding: 2rem;
+            border-radius: 8px;
+            border-left: 4px solid #3498db;
+            transition: all 0.3s;
+        }
+
+        .feature-item:hover {
+            background: rgba(255,255,255,0.12);
+            transform: translateX(5px);
+        }
+
+        .feature-item:nth-child(4) {
+            grid-column: 2 / 4;
+        }
+        
+        .feature-item:nth-child(5) {
+            grid-column: 4 / 6;
+        }
+
+        .check-icon {
+            font-size: 1.5rem;
+            color: #3498db;
+            flex-shrink: 0;
+            font-weight: bold;
+        }
+
+        .feature-text {
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+
+        .feature-text strong {
+            color: #3498db;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .regions-section {
+            background: #3498db;
+            border-radius: 8px;
+            padding: 4rem 3rem;
+            color: white;
+            text-align: center;
+            margin: 4rem 0;
+        }
+
+        .regions-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .region-tag {
+            background: rgba(255,255,255,0.2);
+            padding: 1rem 2rem;
+            border-radius: 5px;
+            font-size: 1.05rem;
+            font-weight: 600;
+            border: 2px solid rgba(255,255,255,0.3);
+            transition: all 0.3s;
+        }
+
+        .region-tag:hover {
+            background: white;
+            color: #3498db;
+            transform: scale(1.05);
+        }
+
+        .contact-section {
+            background: linear-gradient(135deg, #1a252f 0%, #2c3e50 100%);
+            border-radius: 8px;
+            padding: 4rem 3rem;
+            text-align: center;
+            color: white;
+        }
+
+        .contact-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-section p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            color: #bdc3c7;
+        }
+
+        .phone-display {
+            font-size: 2.8rem;
+            font-weight: 900;
+            color: #3498db;
+            margin: 2rem 0;
+            letter-spacing: 2px;
+        }
+
+        .whatsapp-section {
+            background: rgba(255,255,255,0.08);
+            padding: 2rem;
+            border-radius: 8px;
+            margin-top: 2rem;
+            border: 2px solid rgba(52,152,219,0.3);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid rgba(255,255,255,0.3);
+            border-radius: 5px;
+            background: rgba(255,255,255,0.1);
+            color: white;
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: #3498db;
+        }
+
+        .special-services {
+            background: #2c3e50;
+            border-radius: 8px;
+            padding: 3rem;
+            margin-top: 3rem;
+            text-align: center;
+            color: white;
+            border: 3px solid #3498db;
+        }
+
+        .special-services h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #3498db;
+        }
+
+        footer {
+            background: #1a252f;
+            color: white;
+            text-align: center;
+            padding: 2.5rem;
+            margin-top: 4rem;
+        }
+
+        footer .company-name {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #3498db;
+        }
+
+        @media (max-width: 768px) {
+            .services-grid, .features-grid {
+                grid-template-columns: 1fr;
+            }
+            .service-card, .feature-item {
+                grid-column: span 1 !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="hero">
+        <div class="logo">KLC KAROT</div>
+        <p class="hero-subtitle">Profesyonel Karot Delme Hizmetleri</p>
+        <div class="hero-phone">
+            Ali Kılıç - <a href="tel:0531354791">0531 354 79 12</a>
+        </div>
+        <p class="hero-description">
+            KLC KAROT olarak profesyonel karot delme hizmeti veriyoruz. Tuğla ve perde beton delme işlemleri yapılır.
+        </p>
+        <div class="cta-buttons">
+            <a href="tel:0531354791" class="btn btn-primary">Hemen Ara</a>
+            <a href="https://wa.me/905313547912" class="btn btn-secondary">
+                <img src="images/whatsapp.png" class="whatsapp-icon">WhatsApp
+            </a>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="main-card">
+            <h2 class="section-title">Hizmetlerimiz</h2>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <h3>Doğalgaz Baca Delikleri</h3>
+                    <p>Profesyonel ekipmanlarımızla doğalgaz baca delikleri açıyoruz. Temiz ve güvenli çalışma garantisi sunuyoruz.</p>
+                </div>
+
+                <div class="service-card">
+                    <h3>Havalandırma & Kombı Çıkışları</h3>
+                    <p>Havalandırma sistemleri ve kombı çıkışları için özel karot delme hizmetleri.</p>
+                </div>
+
+                <div class="service-card">
+                    <h3>Tesisat - Boru - Kablo Geçişi</h3>
+                    <p>Tesisat, boru ve kablo geçişleri için profesyonel karot delme işlemleri. Hassas ve temiz sonuçlar garantisi.</p>
+                </div>
+
+                <div class="service-card">
+                    <h3>Tadilat Projeleri</h3>
+                    <p>Kapı, pencere ve duvar açma işlemleri. Yapısal bütünlüğü koruyarak profesyonel tadilat hizmetleri sunuyoruz.</p>
+                </div>
+
+                <div class="service-card">
+                    <h3>Temiz ve Düzgün Delik Açma</h3>
+                    <p>Toz kontrolü ve temiz çalışma alanı garantisiyle düzgün ve hassas delik açma işlemleri gerçekleştiriyoruz.</p>
+                </div>
+            </div>
+
+            <div class="features-section">
+                <h2 class="section-title" style="color: white;">Neden KLC KAROT?</h2>
+                <div class="features-grid">
+                    <div class="feature-item">
+                        <span class="check-icon">✓</span>
+                        <div class="feature-text">
+                            <strong>Dökülmez Baca Delikleri</strong>
+                            Özel tekniklerimizle tamamen dökülmez çalışma garantisi veriyoruz
+                        </div>
+                    </div>
+
+                    <div class="feature-item">
+                        <span class="check-icon">✓</span>
+                        <div class="feature-text">
+                            <strong>Havalandırma & Kombı Çıkışları</strong>
+                            Profesyonel ekipman ve deneyimli usta ile kaliteli hizmet
+                        </div>
+                    </div>
+
+                    <div class="feature-item">
+                        <span class="check-icon">✓</span>
+                        <div class="feature-text">
+                            <strong>Tesisat - Boru - Kablo Geçişi</strong>
+                            Hassas ölçüm ve temiz çalışma alanı garantisi
+                        </div>
+                    </div>
+
+                    <div class="feature-item">
+                        <span class="check-icon">✓</span>
+                        <div class="feature-text">
+                            <strong>Tadilat Projeleri</strong>
+                            Kapsamlı tadilat ve yenileme hizmetleri sunuyoruz
+                        </div>
+                    </div>
+
+                    <div class="feature-item">
+                        <span class="check-icon">✓</span>
+                        <div class="feature-text">
+                            <strong>Temiz ve Düzgün Delik Açma</strong>
+                            Toz kontrolü sistemleri ile mükemmel sonuçlar
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="regions-section">
+                <h2 class="section-title" style="color: white;">Hizmet Bölgelerimiz</h2>
+                <p style="font-size: 1.2rem; margin-bottom: 2rem;">Kayseri bölgesinde hızlı, temiz ve profesyonel çalışma</p>
+                <div class="regions-list">
+                    <span class="region-tag">Kayseri</span>
+                    <span class="region-tag">Hızlı Servis</span>
+                    <span class="region-tag">Temiz Çalışma</span>
+                    <span class="region-tag">Profesyonel Usta</span>
+                </div>
+            </div>
+
+            <div class="contact-section">
+                <h2>Profesyonel Karot Delme Hizmeti İçin</h2>
+                <p>Doğalgaz, tesisat, kombı ve havalandırma delikleri için</p>
+                <div class="phone-display">0531 354 79 12</div>
+                
+                <div class="cta-buttons">
+                    <a href="tel:0531354791" class="btn btn-primary">Hemen Ara</a>
+                    <a href="https://wa.me/905313547912" class="btn btn-secondary">
+                        <img src="images/whatsapp.png" class="whatsapp-icon">WhatsApp Mesaj Gönder
+                    </a>
+                </div>
+
+                <div class="whatsapp-section">
+                    <p><strong>Hızlı Teklif Formu - WhatsApp'a Yönlendirileceksiniz</strong></p>
+                    
+                    <form id="contactForm" style="max-width: 600px; margin: 2rem auto;">
+                        <input type="text" id="name" placeholder="Adınız Soyadınız" required class="form-control">
+                        <input type="tel" id="phone" placeholder="Telefon Numaranız" required class="form-control">
+                        <select id="service" required class="form-control">
+                            <option value="">Hizmet Seçiniz</option>
+                            <option value="Dökülmez Baca Delikleri">Dökülmez Baca Delikleri</option>
+                            <option value="Havalandırma & Kombı Çıkışları">Havalandırma & Kombı Çıkışları</option>
+                            <option value="Tadilat - Boru - Kablo Geçişi">Tadilat - Boru - Kablo Geçişİ</option>
+                            <option value="Tadilat Projeleri">Tadilat Projeleri</option>
+                            <option value="Temiz ve Düzgün Delik Açma">Temiz ve Düzgün Delik Açma</option>
+                            <option value="Diğer">Diğer</option>
+                        </select>
+                        <textarea id="message" placeholder="Mesajınız (isteğe bağlı)" rows="4" class="form-control"></textarea>
+                        <button type="submit" class="btn btn-primary" style="width: 100%;">WhatsApp'ta Devam Et</button>
+                    </form>
+
+                    <p style="margin-top: 2rem; font-size: 0.95rem; opacity: 0.8;">
+                        Formu doldurduktan sonra WhatsApp'a yönlendirileceksiniz.
+                    </p>
+                </div>
+            </div>
+
+            <div class="special-services">
+                <h3>Özel Hizmetlerimiz</h3>
+                <p><strong>Epoksi Filiz Ekme ve Karbon Fiber Kolon Kirişlendirme</strong></p>
+                <p style="margin-top: 1rem;">Yapısal güçlendirme ve özel mühendislik çözümleri de sunmaktayız.</p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p class="company-name">KLC KAROT - Ali Kılıç</p>
+        <p style="color: #3498db; font-size: 1.2rem; font-weight: 600;">0531 354 79 12</p>
+        <p style="margin-top: 1rem; color: #bdc3c7;">Profesyonel Karot Delme ve Beton İşleme Hizmetleri</p>
+        <p style="color: #bdc3c7;">&copy; 2024 KLC KAROT - Tüm Hakları Saklıdır</p>
+    </footer>
+
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const phone = document.getElementById('phone').value;
+            const service = document.getElementById('service').value;
+            const message = document.getElementById('message').value;
+            
+            let whatsappMessage = 'Merhaba, web sitesinden ulaşıyorum.\n\n';
+            whatsappMessage += 'Ad Soyad: ' + name + '\n';
+            whatsappMessage += 'Telefon: ' + phone + '\n';
+            whatsappMessage += 'İlgilendiğim Hizmet: ' + service + '\n';
+            
+            if (message) {
+                whatsappMessage += '\nMesaj: ' + message;
+            }
+            
+            const whatsappURL = 'https://wa.me/905313547912?text=' + encodeURIComponent(whatsappMessage);
+            window.open(whatsappURL, '_blank');
+            
+            this.reset();
+        });
+    </script>
+</body>
+</html>

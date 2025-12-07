@@ -363,12 +363,98 @@
             color: #3498db;
         }
 
+@media (min-width: 769px) and (max-width: 1024px) {
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            /* 4. ve 5. öğeleri serbest bırak */
+            .service-card:nth-child(4) {
+                grid-column: span 1 / auto;
+            }
+            .service-card:nth-child(5) {
+                grid-column: span 1 / auto;
+            }
+
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .feature-item:nth-child(4) {
+                grid-column: span 1 / auto;
+            }
+            .feature-item:nth-child(5) {
+                grid-column: span 1 / auto;
+            }
+        }
+        
+        /* Cep telefonları (768px ve altı) */
         @media (max-width: 768px) {
+            .hero {
+                padding: 2.5rem 1rem;
+            }
+            .logo {
+                font-size: 2.5rem;
+            }
+            .hero-phone {
+                font-size: 1.6rem;
+            }
+
+            .container {
+                padding: 0 0.5rem 2rem;
+                margin: -20px auto 0;
+            }
+            
+            .main-card {
+                padding: 1.5rem 1rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+                margin-bottom: 1.5rem;
+            }
+
+            /* Grid düzenini tek sütuna indir */
             .services-grid, .features-grid {
                 grid-template-columns: 1fr;
+                gap: 1rem;
             }
-            .service-card, .feature-item {
+            
+            /* Tüm grid öğelerinin span ayarlarını sıfırla */
+            .service-card, .feature-item, 
+            .service-card:nth-child(4), .service-card:nth-child(5),
+            .feature-item:nth-child(4), .feature-item:nth-child(5) {
                 grid-column: span 1 !important;
+                padding: 1.5rem;
+            }
+            
+            /* Butonları alt alta sırala ve tam genişlik yap */
+            .cta-buttons {
+                flex-direction: column;
+                gap: 0.8rem;
+            }
+            
+            .btn {
+                width: 100%;
+                padding: 1rem 2rem;
+            }
+            
+            .regions-section, .contact-section {
+                padding: 2.5rem 1rem;
+            }
+
+            .phone-display {
+                font-size: 1.8rem;
+            }
+
+            .contact-section h2 {
+                font-size: 2rem;
+            }
+            
+            .whatsapp-section {
+                padding: 1rem;
+            }
+
+            footer {
+                padding: 1.5rem 1rem;
             }
         }
     </style>
@@ -469,7 +555,7 @@
 
             <div class="regions-section">
                 <h2 class="section-title" style="color: white;">Hizmet Bölgelerimiz</h2>
-                <p style="font-size: 1.2rem; margin-bottom: 2rem;">Kayseri bölgesinde hızlı, temiz ve profesyonel çalışma</p>
+                <p style="font-size: 1.2rem; margin-bottom: 2rem;">Kayseri ve çevre iller bölgesinde hızlı, temiz ve profesyonel çalışma</p>
                 <div class="regions-list">
                     <span class="region-tag">Kayseri</span>
                     <span class="region-tag">Hızlı Servis</span>
@@ -517,7 +603,7 @@
 
             <div class="special-services">
                 <h3>Özel Hizmetlerimiz</h3>
-                <p><strong>Epoksi Filiz Ekme ve Karbon Fiber Kolon Kirişlendirme</strong></p>
+                <p><strong>Epoksi Filiz Ekme ve Karbon Fiberli Kolon Kiriş güçlendirme</strong></p>
                 <p style="margin-top: 1rem;">Yapısal güçlendirme çözümleri de sunmaktayız.</p>
             </div>
         </div>
@@ -556,3 +642,4 @@
     </script>
 </body>
 </html>
+

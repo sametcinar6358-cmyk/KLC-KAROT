@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>KLC KAROT - Profesyonel Karot Delme Hizmetleri</title>
     <style>
-        /* CSS kodları önceki haliyle aynı tutulmuştur, sadece kullanılmayan .special-services'in display: none'ı kaldırıldı */
         * {
             margin: 0;
             padding: 0;
@@ -63,6 +62,99 @@
             max-width: 700px;
             margin: 2rem auto;
             color: #ecf0f1;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(52, 152, 219, 0.2);
+            border: 2px solid #3498db;
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #3498db;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* Modal pour agrandir les images */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 10000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.95);
+            animation: fadeIn 0.3s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal.show {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
+            animation: zoomIn 0.3s;
+        }
+
+        @keyframes zoomIn {
+            from { transform: scale(0.8); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 40px;
+            color: white;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            z-index: 10001;
+        }
+
+        .modal-close:hover {
+            color: #3498db;
+            transform: scale(1.2);
+        }
+
+        .modal-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            color: white;
+            font-size: 50px;
+            font-weight: bold;
+            cursor: pointer;
+            padding: 20px;
+            user-select: none;
+            transition: all 0.3s;
+        }
+
+        .modal-nav:hover {
+            color: #3498db;
+            transform: translateY(-50%) scale(1.2);
+        }
+
+        .modal-prev {
+            left: 20px;
+        }
+
+        .modal-next {
+            right: 20px;
         }
 
         .cta-buttons {
@@ -190,6 +282,133 @@
             color: #555;
             font-size: 1.05rem;
             line-height: 1.8;
+        }
+
+        /* GALLERY SECTION */
+        .gallery-section {
+            margin: 4rem 0;
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            border-radius: 8px;
+            padding: 3rem;
+        }
+
+        .gallery-section .section-title {
+            color: white;
+        }
+
+        .gallery-section .section-title::after {
+            background: #3498db;
+        }
+
+        .gallery-preview {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .preview-image {
+            position: relative;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .preview-image:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 25px rgba(52,152,219,0.5);
+        }
+
+        .preview-image img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            display: block;
+            cursor: pointer;
+        }
+
+        .preview-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            padding: 1rem;
+            color: white;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .gallery-toggle {
+            width: 100%;
+            padding: 1.5rem 2rem;
+            background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.3rem;
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(52,152,219,0.3);
+            margin-top: 2rem;
+        }
+
+        .gallery-toggle:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(52,152,219,0.5);
+        }
+
+        #gallery-arrow {
+            font-size: 1.2rem;
+            transition: transform 0.3s;
+        }
+
+        .gallery-toggle.active #gallery-arrow {
+            transform: rotate(180deg);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 2rem;
+            max-height: 0;
+            overflow: hidden;
+            opacity: 0;
+            transition: all 0.5s ease;
+        }
+
+        .gallery-grid.show {
+            max-height: 5000px;
+            opacity: 1;
+            padding: 2rem 0;
+        }
+
+        .gallery-item {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            transition: all 0.3s;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(52,152,219,0.4);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            display: block;
+            cursor: pointer;
         }
 
         .features-section {
@@ -334,6 +553,21 @@
             border-color: #3498db;
         }
 
+        .special-services {
+            background: #2c3e50;
+            border-radius: 8px;
+            padding: 3rem;
+            margin-top: 3rem;
+            text-align: center;
+            color: white;
+            border: 3px solid #3498db;
+        }
+
+        .special-services h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #3498db;
+        }
 
         footer {
             background: #1a252f;
@@ -349,11 +583,15 @@
             color: #3498db;
         }
 
-@media (min-width: 769px) and (max-width: 1024px) {
+        /* ------------------------------------------------------------------ */
+        /* --- MOBİL UYUMLULUK --- */
+        /* ------------------------------------------------------------------ */
+
+        /* Tabletler için 2 sütunlu yapı */
+        @media (min-width: 769px) and (max-width: 1024px) {
             .services-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
-            /* 4. ve 5. öğeleri serbest bırak */
             .service-card:nth-child(4) {
                 grid-column: span 1 / auto;
             }
@@ -369,6 +607,10 @@
             }
             .feature-item:nth-child(5) {
                 grid-column: span 1 / auto;
+            }
+
+            .gallery-grid, .gallery-preview {
+                grid-template-columns: repeat(2, 1fr);
             }
         }
         
@@ -398,13 +640,11 @@
                 margin-bottom: 1.5rem;
             }
 
-            /* Grid düzenini tek sütuna indir */
             .services-grid, .features-grid {
                 grid-template-columns: 1fr;
                 gap: 1rem;
             }
             
-            /* Tüm grid öğelerinin span ayarlarını sıfırla */
             .service-card, .feature-item, 
             .service-card:nth-child(4), .service-card:nth-child(5),
             .feature-item:nth-child(4), .feature-item:nth-child(5) {
@@ -412,7 +652,6 @@
                 padding: 1.5rem;
             }
             
-            /* Butonları alt alta sırala ve tam genişlik yap */
             .cta-buttons {
                 flex-direction: column;
                 gap: 0.8rem;
@@ -442,6 +681,24 @@
             footer {
                 padding: 1.5rem 1rem;
             }
+
+            .gallery-grid, .gallery-preview {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .gallery-item img, .preview-image img {
+                height: 200px;
+            }
+
+            .gallery-toggle {
+                font-size: 1.1rem;
+                padding: 1.2rem 1.5rem;
+            }
+
+            .gallery-section {
+                padding: 2rem 1rem;
+            }
         }
     </style>
 </head>
@@ -449,16 +706,17 @@
     <div class="hero">
         <div class="logo">KLC KAROT</div>
         <p class="hero-subtitle">Profesyonel Karot Delme Hizmetleri</p>
+        <div class="hero-badge">🇫🇷 25 Yıllık Fransa'dan Tecrübeli 🇫🇷</div>
         <div class="hero-phone">
-            Ali Kılıç - <a href="tel:0531354791">0531 354 79 12</a>
+            Ali Kılıç - <a href="tel:05313547912">0531 354 79 12</a>
         </div>
         <p class="hero-description">
             KLC KAROT olarak profesyonel karot delme hizmeti veriyoruz. Tuğla ve perde beton delme işlemleri yapılır.
         </p>
         <div class="cta-buttons">
-            <a href="tel:0531354791" class="btn btn-primary">Hemen Ara</a>
+            <a href="tel:05313547912" class="btn btn-primary">Hemen Ara</a>
             <a href="https://wa.me/905313547912" class="btn btn-secondary">
-                <img src="images/whatsapp.png" class="whatsapp-icon">WhatsApp
+                <img src="images/whatsapp.png" alt="WhatsApp İkonu" class="whatsapp-icon">WhatsApp
             </a>
         </div>
     </div>
@@ -485,12 +743,67 @@
 
                 <div class="service-card">
                     <h3>Tadilat Projeleri</h3>
-                    <p>Zemin, döşeme, duvar ve perde beton delme işlemleri yapılır. Kapı, pencere yeri açma, derin delikler ve yapısal revizyonlar için hassas karot çözümleri sunuyoruz. Yapısal güçlendirme gerektiren durumlarda ise Epoksi Filiz Ekme hizmeti de vermekteyiz. </p>
+                    <p>Zemin, döşeme, duvar ve perde beton delme işlemleri yapılır. Kapı, pencere yeri açma, derin delikler ve yapısal revizyonlar için hassas karot çözümleri sunuyoruz. Yapısal güçlendirme gerektiren durumlarda ise Epoksi Filiz Ekme hizmeti de vermekteyiz.</p>
                 </div>
 
                 <div class="service-card">
                     <h3>Temiz ve Düzgün Delik Açma</h3>
                     <p>Toz kontrolü ve temiz çalışma alanı garantisiyle düzgün ve hassas delik açma işlemleri gerçekleştiriyoruz.</p>
+                </div>
+            </div>
+
+            <!-- GALLERY SECTION - Juste après Hizmetlerimiz -->
+            <div class="gallery-section">
+                <h2 class="section-title">Bina Güçlendirme Projemizden Görüntüler</h2>
+                
+                <div class="gallery-preview">
+                    <div class="preview-image">
+                        <img src="images/kolon_guclendirme_epoksi_filiz_ekme.jpeg" alt="Epoksi Filiz Ekme" onclick="openModal(6)">
+                        <div class="preview-overlay">Epoksi Filiz Ekme</div>
+                    </div>
+                    <div class="preview-image">
+                        <img src="images/karot_makinesi_hilti_delme.jpeg" alt="Karot Makinesi" onclick="openModal(4)">
+                        <div class="preview-overlay">Profesyonel Karot Delme</div>
+                    </div>
+                    <div class="preview-image">
+                        <img src="images/kolon_guclendirme_donati_kafesi.jpeg" alt="Kolon Güçlendirme" onclick="openModal(5)">
+                        <div class="preview-overlay">Kolon Güçlendirme</div>
+                    </div>
+                </div>
+
+                <button class="gallery-toggle" onclick="toggleGallery()">
+                    <span id="gallery-text">Tüm Proje Fotoğraflarını Görüntüle</span>
+                    <span id="gallery-arrow">▼</span>
+                </button>
+
+                <div class="gallery-grid" id="galleryGrid">
+                    <div class="gallery-item">
+                        <img src="images/celik_kolon_ankraj_detay.jpg" alt="Çelik Kolon Ankraj Detay" onclick="openModal(0)">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/celik_kolon_temel_baglantisi.jpeg" alt="Çelik Kolon Temel Bağlantısı" onclick="openModal(1)">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/karot_beton_numune_delik.jpeg" alt="Karot Beton Numune Delik" onclick="openModal(2)">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/karot_ile_zemin_delme_islemi.jpeg" alt="Karot ile Zemin Delme İşlemi" onclick="openModal(3)">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/karot_makinesi_hilti_delme.jpeg" alt="Karot Makinesi Hilti Delme" onclick="openModal(4)">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/kolon_guclendirme_donati_kafesi.jpeg" alt="Kolon Güçlendirme Donatı Kafesi" onclick="openModal(5)">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/kolon_guclendirme_epoksi_filiz_ekme.jpeg" alt="Kolon Güçlendirme Epoksi Filiz Ekme" onclick="openModal(6)">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/kolon_kalip_demircilik.jpg" alt="Kolon Kalıp Demircilik" onclick="openModal(7)">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/temel_guclendirme_donati_ag.jpeg" alt="Temel Güçlendirme Donatı Ağ" onclick="openModal(8)">
+                    </div>
                 </div>
             </div>
 
@@ -541,7 +854,7 @@
 
             <div class="regions-section">
                 <h2 class="section-title" style="color: white;">Hizmet Bölgelerimiz</h2>
-                <p style="font-size: 1.2rem; margin-bottom: 2rem;">Kayseri ve çevre iller bölgesinde hızlı, temiz ve profesyonel çalışma</p>
+                <p style="font-size: 1.2rem; margin-bottom: 2rem;">Kayseri bölgesinde hızlı, temiz ve profesyonel çalışma</p>
                 <div class="regions-list">
                     <span class="region-tag">Kayseri</span>
                     <span class="region-tag">Hızlı Servis</span>
@@ -556,9 +869,9 @@
                 <div class="phone-display">0531 354 79 12</div>
                 
                 <div class="cta-buttons">
-                    <a href="tel:0531354791" class="btn btn-primary">Hemen Ara</a>
+                    <a href="tel:05313547912" class="btn btn-primary">Hemen Ara</a>
                     <a href="https://wa.me/905313547912" class="btn btn-secondary">
-                        <img src="images/whatsapp.png" class="whatsapp-icon">WhatsApp Mesaj Gönder
+                        <img src="images/whatsapp.png" alt="WhatsApp İkonu" class="whatsapp-icon">WhatsApp Mesaj Gönder
                     </a>
                 </div>
 
@@ -572,7 +885,7 @@
                             <option value="">Hizmet Seçiniz</option>
                             <option value="Dökülmez Baca Delikleri">Dökülmez Baca Delikleri</option>
                             <option value="Havalandırma & Kombı Çıkışları">Havalandırma & Kombı Çıkışları</option>
-                            <option value="Tadilat - Boru - Kablo Geçişi">Tadilat - Boru - Kablo Geçişİ</option>
+                            <option value="Tesisat - Boru - Kablo Geçişi">Tesisat - Boru - Kablo Geçişi</option>
                             <option value="Tadilat Projeleri">Tadilat Projeleri</option>
                             <option value="Temiz ve Düzgün Delik Açma">Temiz ve Düzgün Delik Açma</option>
                             <option value="Diğer">Diğer</option>
@@ -586,8 +899,9 @@
                     </p>
                 </div>
             </div>
-            
-            </div>
+
+
+        </div>
     </div>
 
     <footer>
@@ -597,7 +911,80 @@
         <p style="color: #bdc3c7;">&copy; 2025 KLC KAROT - Tüm Hakları Saklıdır</p>
     </footer>
 
+    <!-- Modal pour agrandir les images -->
+    <div id="imageModal" class="modal" onclick="closeModal()">
+        <span class="modal-close" onclick="closeModal()">&times;</span>
+        <span class="modal-nav modal-prev" onclick="event.stopPropagation(); changeImage(-1)">&#10094;</span>
+        <img class="modal-content" id="modalImage" onclick="event.stopPropagation()">
+        <span class="modal-nav modal-next" onclick="event.stopPropagation(); changeImage(1)">&#10095;</span>
+    </div>
+
     <script>
+        // Liste des images pour la modal
+        const images = [
+            'images/celik_kolon_ankraj_detay.jpg',
+            'images/celik_kolon_temel_baglantisi.jpeg',
+            'images/karot_beton_numune_delik.jpeg',
+            'images/karot_ile_zemin_delme_islemi.jpeg',
+            'images/karot_makinesi_hilti_delme.jpeg',
+            'images/kolon_guclendirme_donati_kafesi.jpeg',
+            'images/kolon_guclendirme_epoksi_filiz_ekme.jpeg',
+            'images/kolon_kalip_demircilik.jpg',
+            'images/temel_guclendirme_donati_ag.jpeg'
+        ];
+
+        let currentImageIndex = 0;
+
+        function openModal(index) {
+            currentImageIndex = index;
+            const modal = document.getElementById('imageModal');
+            const modalImg = document.getElementById('modalImage');
+            modal.classList.add('show');
+            modalImg.src = images[currentImageIndex];
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('imageModal');
+            modal.classList.remove('show');
+            document.body.style.overflow = 'auto';
+        }
+
+        function changeImage(direction) {
+            currentImageIndex += direction;
+            if (currentImageIndex < 0) {
+                currentImageIndex = images.length - 1;
+            } else if (currentImageIndex >= images.length) {
+                currentImageIndex = 0;
+            }
+            document.getElementById('modalImage').src = images[currentImageIndex];
+        }
+
+        // Fermer avec la touche Escape
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeModal();
+            } else if (event.key === 'ArrowLeft') {
+                changeImage(-1);
+            } else if (event.key === 'ArrowRight') {
+                changeImage(1);
+            }
+        });
+
+        function toggleGallery() {
+            const galleryGrid = document.getElementById('galleryGrid');
+            const galleryToggle = document.querySelector('.gallery-toggle');
+            
+            galleryGrid.classList.toggle('show');
+            galleryToggle.classList.toggle('active');
+            
+            if (galleryGrid.classList.contains('show')) {
+                document.getElementById('gallery-text').textContent = 'Fotoğrafları Gizle';
+            } else {
+                document.getElementById('gallery-text').textContent = 'Tüm Proje Fotoğraflarını Görüntüle';
+            }
+        }
+
         document.getElementById('contactForm').addEventListener('submit', function(e) {
             e.preventDefault();
             

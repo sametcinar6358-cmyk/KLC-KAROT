@@ -1,0 +1,14 @@
+{
+  "name": "klc-karot",
+  "version": "1.0.0",
+  "private": true,
+  "description": "KLC KAROT - Professional Core Drilling Services in Kayseri",
+  "scripts": {
+    "dev": "vite",
+    "build": "echo 'Static site ready for deploy'",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "vite": "^5.3.1"
+  }
+}

@@ -119,11 +119,13 @@ nav.main-nav{
 }
 
 .brand-logo{
-  width:58px;
-  height:58px;
-  object-fit:cover;
-  border:2px solid var(--rust);
-  background:var(--steel);
+  width:120px;
+  height:120px;
+  object-fit:contain;
+}
+.brand-text{
+  display:flex;
+  flex-direction:column;
 }
 .brand-logo-fallback{
   width:58px;
@@ -571,6 +573,7 @@ footer{
 }
 .footer-brand{ display:flex; align-items:center; gap:0.8rem; margin-bottom:1rem; }
 .footer-brand .brand-name{ color:white; font-family:var(--font-display); font-size:1.2rem; }
+.footer-brand .brand-logo{ width:80px !important; height:80px !important; }
 footer h4{
   color:white; font-size:0.95rem; margin-bottom:1rem; letter-spacing:0.08em;
 }

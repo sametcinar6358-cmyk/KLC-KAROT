@@ -8,23 +8,6 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-  // ====== Logo : essaie plusieurs extensions, puis repli stylé ======
-  const logoExts = ['jpeg', 'jpg', 'png', 'webp'];
-  document.querySelectorAll('.brand-logo').forEach(function (img) {
-    let tryIndex = logoExts.indexOf((img.getAttribute('src').split('.').pop() || '').toLowerCase());
-    if (tryIndex === -1) tryIndex = 0;
-    img.addEventListener('error', function () {
-      tryIndex++;
-      if (tryIndex < logoExts.length) {
-        img.src = 'images/logo_uca.' + logoExts[tryIndex];
-      } else {
-        const fallback = document.createElement('div');
-        fallback.className = 'brand-logo-fallback';
-        fallback.textContent = 'KLC';
-        img.replaceWith(fallback);
-      }
-    });
-  });
 
   // ====== Formulaire de contact -> WhatsApp ======
   const contactForm = document.getElementById('contactForm');
